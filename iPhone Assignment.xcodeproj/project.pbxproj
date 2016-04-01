@@ -8,20 +8,22 @@
 
 /* Begin PBXBuildFile section */
 		01E56A0C1CAE32CA0062BD1D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E56A0B1CAE32CA0062BD1D /* AppDelegate.swift */; };
-		01E56A0E1CAE32CA0062BD1D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E56A0D1CAE32CA0062BD1D /* ViewController.swift */; };
+		01E56A0E1CAE32CA0062BD1D /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E56A0D1CAE32CA0062BD1D /* HomeController.swift */; };
 		01E56A111CAE32CA0062BD1D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01E56A0F1CAE32CA0062BD1D /* Main.storyboard */; };
 		01E56A131CAE32CA0062BD1D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01E56A121CAE32CA0062BD1D /* Assets.xcassets */; };
 		01E56A161CAE32CA0062BD1D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01E56A141CAE32CA0062BD1D /* LaunchScreen.storyboard */; };
+		01F563191CAE34C0004216E2 /* OnboardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F563181CAE34C0004216E2 /* OnboardController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		01E56A081CAE32CA0062BD1D /* iPhone Assignment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iPhone Assignment.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		01E56A0B1CAE32CA0062BD1D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		01E56A0D1CAE32CA0062BD1D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		01E56A0D1CAE32CA0062BD1D /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		01E56A101CAE32CA0062BD1D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		01E56A121CAE32CA0062BD1D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		01E56A151CAE32CA0062BD1D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		01E56A171CAE32CA0062BD1D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		01F563181CAE34C0004216E2 /* OnboardController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +56,23 @@
 		01E56A0A1CAE32CA0062BD1D /* iPhone Assignment */ = {
 			isa = PBXGroup;
 			children = (
+				01F563171CAE3455004216E2 /* Controllers */,
 				01E56A0B1CAE32CA0062BD1D /* AppDelegate.swift */,
-				01E56A0D1CAE32CA0062BD1D /* ViewController.swift */,
 				01E56A0F1CAE32CA0062BD1D /* Main.storyboard */,
 				01E56A121CAE32CA0062BD1D /* Assets.xcassets */,
 				01E56A141CAE32CA0062BD1D /* LaunchScreen.storyboard */,
 				01E56A171CAE32CA0062BD1D /* Info.plist */,
 			);
 			path = "iPhone Assignment";
+			sourceTree = "<group>";
+		};
+		01F563171CAE3455004216E2 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				01E56A0D1CAE32CA0062BD1D /* HomeController.swift */,
+				01F563181CAE34C0004216E2 /* OnboardController.swift */,
+			);
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -136,8 +147,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				01E56A0E1CAE32CA0062BD1D /* ViewController.swift in Sources */,
+				01E56A0E1CAE32CA0062BD1D /* HomeController.swift in Sources */,
 				01E56A0C1CAE32CA0062BD1D /* AppDelegate.swift in Sources */,
+				01F563191CAE34C0004216E2 /* OnboardController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,6 +299,7 @@
 				01E56A1C1CAE32CA0062BD1D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
