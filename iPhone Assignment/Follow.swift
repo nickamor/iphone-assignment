@@ -1,5 +1,5 @@
 //
-//  Follows.swift
+//  Follow.swift
 //  iPhone Assignment
 //
 //  Created by Nick Amor on 4/04/2016.
@@ -8,6 +8,8 @@
 
 import Foundation
 
-class Follows {
-    
+class Follow {
+    var id: Int = 0
+    var victimId: Int = 0
+    var stalkerId: Int = 0
 }

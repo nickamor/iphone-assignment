@@ -9,5 +9,8 @@
 import Foundation
 
 class Post {
-    
+    var id: Int = 0
+    var creatorId: Int = 0
+    var timestamp: NSDate = NSDate()
+    var content: String = ""
 }

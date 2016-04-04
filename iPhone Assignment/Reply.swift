@@ -9,5 +9,9 @@
 import Foundation
 
 class Reply {
-    
+    var id: Int = 0
+    var postId: Int = 0
+    var creatorId: Int = 0
+    var timestamp: NSDate = NSDate()
+    var content: String = ""
 }

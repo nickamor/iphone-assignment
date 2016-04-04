@@ -8,6 +8,8 @@
 
 import Foundation
 
-class Votes {
-    
+class Vote {
+    var id: Int = 0
+    var userId: Int = 0
+    var postId: Int = 0
 }
