@@ -13,6 +13,14 @@
 		01E56A131CAE32CA0062BD1D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01E56A121CAE32CA0062BD1D /* Assets.xcassets */; };
 		01E56A161CAE32CA0062BD1D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01E56A141CAE32CA0062BD1D /* LaunchScreen.storyboard */; };
 		01F563191CAE34C0004216E2 /* OnboardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F563181CAE34C0004216E2 /* OnboardController.swift */; };
+		BA49589F1CB2217A00907E84 /* PostController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA49589E1CB2217A00907E84 /* PostController.swift */; };
+		BA4958A11CB2226600907E84 /* Home.FriendFeedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA4958A01CB2226600907E84 /* Home.FriendFeedController.swift */; };
+		BA4958A41CB2238900907E84 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA4958A31CB2238900907E84 /* Model.swift */; };
+		BA4958A61CB2239400907E84 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA4958A51CB2239400907E84 /* User.swift */; };
+		BA4958A81CB2240100907E84 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA4958A71CB2240100907E84 /* Post.swift */; };
+		BA4958AA1CB2242300907E84 /* Reply.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA4958A91CB2242300907E84 /* Reply.swift */; };
+		BA4958AC1CB224A900907E84 /* Votes.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA4958AB1CB224A900907E84 /* Votes.swift */; };
+		BA4958AE1CB224B600907E84 /* Follows.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA4958AD1CB224B600907E84 /* Follows.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +32,14 @@
 		01E56A151CAE32CA0062BD1D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		01E56A171CAE32CA0062BD1D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		01F563181CAE34C0004216E2 /* OnboardController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardController.swift; sourceTree = "<group>"; };
+		BA49589E1CB2217A00907E84 /* PostController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostController.swift; sourceTree = "<group>"; };
+		BA4958A01CB2226600907E84 /* Home.FriendFeedController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Home.FriendFeedController.swift; sourceTree = "<group>"; };
+		BA4958A31CB2238900907E84 /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		BA4958A51CB2239400907E84 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		BA4958A71CB2240100907E84 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		BA4958A91CB2242300907E84 /* Reply.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reply.swift; sourceTree = "<group>"; };
+		BA4958AB1CB224A900907E84 /* Votes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Votes.swift; sourceTree = "<group>"; };
+		BA4958AD1CB224B600907E84 /* Follows.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Follows.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +72,7 @@
 		01E56A0A1CAE32CA0062BD1D /* iPhone Assignment */ = {
 			isa = PBXGroup;
 			children = (
+				BA4958A21CB2236F00907E84 /* Model */,
 				01F563171CAE3455004216E2 /* Controllers */,
 				01E56A0B1CAE32CA0062BD1D /* AppDelegate.swift */,
 				01E56A0F1CAE32CA0062BD1D /* Main.storyboard */,
@@ -71,8 +88,23 @@
 			children = (
 				01E56A0D1CAE32CA0062BD1D /* HomeController.swift */,
 				01F563181CAE34C0004216E2 /* OnboardController.swift */,
+				BA49589E1CB2217A00907E84 /* PostController.swift */,
+				BA4958A01CB2226600907E84 /* Home.FriendFeedController.swift */,
 			);
 			name = Controllers;
+			sourceTree = "<group>";
+		};
+		BA4958A21CB2236F00907E84 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				BA4958A31CB2238900907E84 /* Model.swift */,
+				BA4958A51CB2239400907E84 /* User.swift */,
+				BA4958A71CB2240100907E84 /* Post.swift */,
+				BA4958A91CB2242300907E84 /* Reply.swift */,
+				BA4958AB1CB224A900907E84 /* Votes.swift */,
+				BA4958AD1CB224B600907E84 /* Follows.swift */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -147,9 +179,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA4958AA1CB2242300907E84 /* Reply.swift in Sources */,
+				BA4958AC1CB224A900907E84 /* Votes.swift in Sources */,
 				01E56A0E1CAE32CA0062BD1D /* HomeController.swift in Sources */,
+				BA49589F1CB2217A00907E84 /* PostController.swift in Sources */,
 				01E56A0C1CAE32CA0062BD1D /* AppDelegate.swift in Sources */,
+				BA4958A81CB2240100907E84 /* Post.swift in Sources */,
+				BA4958A41CB2238900907E84 /* Model.swift in Sources */,
+				BA4958AE1CB224B600907E84 /* Follows.swift in Sources */,
+				BA4958A11CB2226600907E84 /* Home.FriendFeedController.swift in Sources */,
 				01F563191CAE34C0004216E2 /* OnboardController.swift in Sources */,
+				BA4958A61CB2239400907E84 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
