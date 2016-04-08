@@ -16,6 +16,7 @@
 		01F5633B1CB241E1004216E2 /* Home.FollowsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F5633A1CB241E1004216E2 /* Home.FollowsController.swift */; };
 		01F5633D1CB24218004216E2 /* Home.Following.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F5633C1CB24218004216E2 /* Home.Following.swift */; };
 		01F5633F1CB242C8004216E2 /* Home.MeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F5633E1CB242C8004216E2 /* Home.MeController.swift */; };
+		BA0C38741CB777AC0072721C /* UserDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0C38731CB777AC0072721C /* UserDetailController.swift */; };
 		BA49589F1CB2217A00907E84 /* PostDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA49589E1CB2217A00907E84 /* PostDetailController.swift */; };
 		BA4958A11CB2226600907E84 /* Home.FeedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA4958A01CB2226600907E84 /* Home.FeedController.swift */; };
 		BA4958A41CB2238900907E84 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA4958A31CB2238900907E84 /* Model.swift */; };
@@ -24,6 +25,7 @@
 		BA4958AA1CB2242300907E84 /* Reply.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA4958A91CB2242300907E84 /* Reply.swift */; };
 		BA4958AC1CB224A900907E84 /* Vote.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA4958AB1CB224A900907E84 /* Vote.swift */; };
 		BA4958AE1CB224B600907E84 /* Follow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA4958AD1CB224B600907E84 /* Follow.swift */; };
+		BA8AF5691CB773F10038DAEE /* NewPostController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8AF5681CB773F10038DAEE /* NewPostController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +40,7 @@
 		01F5633A1CB241E1004216E2 /* Home.FollowsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Home.FollowsController.swift; sourceTree = "<group>"; };
 		01F5633C1CB24218004216E2 /* Home.Following.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Home.Following.swift; sourceTree = "<group>"; };
 		01F5633E1CB242C8004216E2 /* Home.MeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Home.MeController.swift; sourceTree = "<group>"; };
+		BA0C38731CB777AC0072721C /* UserDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDetailController.swift; sourceTree = "<group>"; };
 		BA49589E1CB2217A00907E84 /* PostDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostDetailController.swift; sourceTree = "<group>"; };
 		BA4958A01CB2226600907E84 /* Home.FeedController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Home.FeedController.swift; sourceTree = "<group>"; };
 		BA4958A31CB2238900907E84 /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
@@ -46,6 +49,7 @@
 		BA4958A91CB2242300907E84 /* Reply.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reply.swift; sourceTree = "<group>"; };
 		BA4958AB1CB224A900907E84 /* Vote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vote.swift; sourceTree = "<group>"; };
 		BA4958AD1CB224B600907E84 /* Follow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Follow.swift; sourceTree = "<group>"; };
+		BA8AF5681CB773F10038DAEE /* NewPostController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewPostController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +103,8 @@
 				01F5633A1CB241E1004216E2 /* Home.FollowsController.swift */,
 				01F5633C1CB24218004216E2 /* Home.Following.swift */,
 				01F5633E1CB242C8004216E2 /* Home.MeController.swift */,
+				BA8AF5681CB773F10038DAEE /* NewPostController.swift */,
+				BA0C38731CB777AC0072721C /* UserDetailController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -196,8 +202,10 @@
 				01E56A0C1CAE32CA0062BD1D /* AppDelegate.swift in Sources */,
 				01F5633D1CB24218004216E2 /* Home.Following.swift in Sources */,
 				BA4958A81CB2240100907E84 /* Post.swift in Sources */,
+				BA8AF5691CB773F10038DAEE /* NewPostController.swift in Sources */,
 				BA4958A41CB2238900907E84 /* Model.swift in Sources */,
 				BA4958AE1CB224B600907E84 /* Follow.swift in Sources */,
+				BA0C38741CB777AC0072721C /* UserDetailController.swift in Sources */,
 				BA4958A11CB2226600907E84 /* Home.FeedController.swift in Sources */,
 				01F563191CAE34C0004216E2 /* OnboardController.swift in Sources */,
 				BA4958A61CB2239400907E84 /* User.swift in Sources */,
