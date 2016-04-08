@@ -11,8 +11,14 @@ import Foundation
 class User {
     var id: Int = 0
     var name: String = ""
-    var password: String = ""
+    var passwordHash: String = ""
     var iconURI: String = ""
     var backgroundURI: String = ""
     var bio: String = ""
+    
+    init(id: Int, name: String, passwordHash: String) {
+        self.id = id
+        self.name = name
+        self.passwordHash = passwordHash
+    }
 }

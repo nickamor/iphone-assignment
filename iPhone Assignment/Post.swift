@@ -13,4 +13,11 @@ class Post {
     var creatorId: Int = 0
     var timestamp: NSDate = NSDate()
     var content: String = ""
+    
+    init (id: Int, creatorId: Int, timestamp: NSDate, content: String) {
+        self.id = id
+        self.creatorId = creatorId
+        self.timestamp = timestamp
+        self.content = content
+    }
 }
