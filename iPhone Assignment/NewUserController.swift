@@ -26,4 +26,8 @@ class NewUserController: UIViewController {
         
         performSegueWithIdentifier("LoginAction", sender: self)
     }
+    
+    @IBAction func cancel(sender: UIButton) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
 }

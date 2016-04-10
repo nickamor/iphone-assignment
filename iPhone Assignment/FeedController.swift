@@ -12,6 +12,14 @@ class FeedController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     @IBOutlet var tableView: UITableView!
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if tableView.indexPathsForSelectedRows != nil {
+            tableView.deselectRowAtIndexPath(self.tableView.indexPathForSelectedRow!, animated: true)
+        }
+    }
+    
     let model: Model = Model.instance
     
     override func viewDidLoad() {

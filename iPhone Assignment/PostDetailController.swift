@@ -63,10 +63,6 @@ class PostDetailController: UIViewController, UITableViewDelegate, UITableViewDa
         return cell
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
-    }
-    
     @IBAction func back(sender: UIBarButtonItem) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }

@@ -8,9 +8,19 @@
 
 import UIKit
 
-class FollowsController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class FollowersController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    let follows = Model.instance.currentUser().follows
+    @IBOutlet var tableView: UITableView!
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if tableView.indexPathsForSelectedRows != nil {
+            tableView.deselectRowAtIndexPath(self.tableView.indexPathForSelectedRow!, animated: true)
+        }
+    }
+    
+    let followers = Model.instance.currentUser().followers
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,11 +34,18 @@ class FollowsController: UIViewController, UITableViewDelegate, UITableViewDataS
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return follows.count
+        return followers.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        let cellIdentifier = "UserTableViewCell"
+        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! UserTableViewCell
+        
+        let user = followers[indexPath.row]
+        
+        cell.name.text = user.displayname
+        
+        return cell
     }
     
     func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {

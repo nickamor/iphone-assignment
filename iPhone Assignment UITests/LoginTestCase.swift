@@ -28,22 +28,93 @@ class LoginTestCase: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func wait(evaluatedWithObject: AnyObject) {
+        let exists = NSPredicate(format: "exists == 1")
+        
+        expectationForPredicate(exists, evaluatedWithObject: evaluatedWithObject, handler: nil)
+        waitForExpectationsWithTimeout(5, handler: nil)
+    }
+    
+    func testLogin() {
+        // FIXME: can't get keyboard input to record
+    }
+    
+    func testSignUp() {
         
         let app = XCUIApplication()
-        let usernameTextField = app.textFields["Username"]
-        usernameTextField.tap()
-        usernameTextField.typeText("bob")
+        wait(app.buttons["New user"])
+        app.buttons["New user"].tap()
         
-        let passwordSecureTextField = app.secureTextFields["Password"]
-        passwordSecureTextField.tap()
-        passwordSecureTextField.typeText("password")
-        app.buttons["Log in"].tap()
+        wait(app.buttons["Sign Up"])
+        app.buttons["Sign Up"].tap()
         
-        // TODO: test current view controller - should be homeviewcontroller
-        // XCTAssertNotNil(app)
+    }
+    
+    func testNewPost() {
+        
+        let app = XCUIApplication()
+        
+        testSignUp()
+        
+        let toolbarsQuery = app.toolbars
+        
+        wait(toolbarsQuery.buttons["Add"])
+        toolbarsQuery.buttons["Add"].tap()
+        
+        let element = app.childrenMatchingType(.Window).elementBoundByIndex(0).childrenMatchingType(.Other).elementBoundByIndex(1).childrenMatchingType(.Other).element
+        element.childrenMatchingType(.TextView).element.tap()
+        element.childrenMatchingType(.TextView).element
+        app.otherElements["Hey"].tap()
+        element.childrenMatchingType(.TextView).element
+        app.otherElements["hey"].tap()
+        element.childrenMatchingType(.TextView).element
+        app.otherElements["it's"].tap()
+        element.childrenMatchingType(.TextView).element
+        app.otherElements["Saturday"].tap()
+        element.childrenMatchingType(.TextView).element
+        toolbarsQuery.buttons["Post"].tap()
+        
+    }
+    
+    func testFindUser() {
+        
+        let app = XCUIApplication()
+        
+        testSignUp()
+        
+        wait(app.tabBars.buttons["Following"])
+        app.tabBars.buttons["Following"].tap()
+        
+        let toolbarsQuery = app.toolbars
+        
+        wait(toolbarsQuery.buttons["Search"])
+        toolbarsQuery.buttons["Search"].tap()
+        app.childrenMatchingType(.Window).elementBoundByIndex(0).childrenMatchingType(.Other).elementBoundByIndex(2).childrenMatchingType(.Other).element.childrenMatchingType(.TextField).element.tap()
+        app.textFields.containingType(.Button, identifier:"Clear text").element
+        
+
+        app.tables.staticTexts["bob"].tap()
+        
+        wait(toolbarsQuery.buttons["Back"])
+        toolbarsQuery.buttons["Back"].tap()
+        toolbarsQuery.buttons["Cancel"].tap()
+        
+    }
+    
+    func testLogOut() {
+        
+        let app = XCUIApplication()
+        
+        testSignUp()
+        
+        wait(app.tabBars.buttons["Me"])
+        app.tabBars.buttons["Me"].tap()
+        
+        
+        let elementsQuery = app.scrollViews.otherElements
+        elementsQuery.childrenMatchingType(.TextView).element.tap()
+        wait(elementsQuery.buttons["Log Out"])
+        elementsQuery.buttons["Log Out"].tap()
         
     }
     
