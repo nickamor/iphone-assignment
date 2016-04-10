@@ -28,8 +28,8 @@ class PostDetailController: UIViewController, UITableViewDelegate, UITableViewDa
         let user = post.creator
         
         name.text = user.displayname
-        //timestamp.text = post.timestamp.description
-        timestamp.text = ""
+        timestamp.text = post.timestamp.description
+        //timestamp.text = ""
         content.text = post.content
         
         /**
@@ -56,8 +56,8 @@ class PostDetailController: UIViewController, UITableViewDelegate, UITableViewDa
         let reply = post.replies[indexPath.row]
         
         cell.name.text = reply.creator.displayname
-        //cell.timestamp.text = reply.timestamp.description
-        cell.timestamp.text = ""
+        cell.timestamp.text = reply.timestamp.description
+        //cell.timestamp.text = ""
         cell.content.text = reply.content
         
         return cell
