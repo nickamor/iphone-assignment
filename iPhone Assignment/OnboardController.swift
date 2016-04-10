@@ -9,6 +9,9 @@
 import UIKit
 
 class OnboardController: UIViewController {
+    @IBOutlet weak var username: UITextField!
+    @IBOutlet weak var password: UITextField!
+    @IBOutlet weak var login: UIButton!
     
     
     override func viewDidLoad() {
@@ -21,5 +24,21 @@ class OnboardController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    
+    @IBAction func loginAction(sender: UIButton) {
+        let model = Model.instance
+        
+        let u = model.login(username.text!, passwordHash: model.passwordHash(password.text!))
+        
+        if u > 0 {
+            performSegueWithIdentifier("LoginSegue", sender: self)
+            
+        } else {
+            let alertController = UIAlertController(title: "Log In Error", message: "The username or password you provided was incorrect.", preferredStyle: UIAlertControllerStyle.Alert)
+            alertController.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+            
+            presentViewController(alertController, animated: true, completion: nil)
+            
+            password.text = ""
+        }
+    }
 }

@@ -1,15 +1,14 @@
 //
-//  Home.MeController.swift
+//  PostDetail.swift
 //  iPhone Assignment
 //
-//  Created by Nicholas Amor on 4/04/2016.
+//  Created by Nicholas Amor on 10/04/2016.
 //  Copyright © 2016 Nicholas Amor. All rights reserved.
 //
 
 import UIKit
 
-class MeController: UIViewController {
-    @IBOutlet weak var logout: UIButton!
+class PostDetailController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,9 +21,4 @@ class MeController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func logoutAction() {
-        Model.instance.logout()
-        
-        performSegueWithIdentifier("LogoutSegue", sender: self)
-    }
 }

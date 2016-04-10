@@ -12,8 +12,11 @@ class Model {
     static let instance = Model()
     
     private init() {
-        let aliceId = createUser("Alice", passwordHash: passwordHash("alice"))
-        let bobId = createUser("Bob", passwordHash: passwordHash("password"))
+        let aliceId = createUser("alice", passwordHash: passwordHash("alice"))
+        let bobId = createUser("bob", passwordHash: passwordHash("password"))
+        
+        getUserById(aliceId).displayname = "Alice"
+        getUserById(bobId).displayname = "Bob"
         
         let firstPostId = createPost(aliceId, timestamp: NSDate(), content: "Hello, World!")
         createReply(firstPostId, creatorId: bobId, timestamp: NSDate(), content: "Bonjour tout le monde!")
@@ -25,16 +28,22 @@ class Model {
     var votes: [Vote] = [Vote]()
     var follows: [Follow] = [Follow]()
     
-    var currentUser: Int = 0
+    var currentUserId: Int = 0
     
     func login(username: String, passwordHash: String) -> Int {
         for user: User in users {
-            if user.name == username && user.passwordHash == passwordHash {
-                currentUser = user.id
+            if user.username == username && user.passwordHash == passwordHash {
+                currentUserId = user.id
             }
         }
         
-        return currentUser
+        return currentUserId
+    }
+    
+    func logout() -> Bool {
+        currentUserId = 0
+        
+        return true
     }
     
     func passwordHash(password: String) -> String {
@@ -45,8 +54,8 @@ class Model {
         return hashedString
     }
     
-    func createUser(name: String, passwordHash: String) -> Int {
-        let newUser = User(id: generateUserId(), name: name, passwordHash: passwordHash)
+    func createUser(username: String, passwordHash: String) -> Int {
+        let newUser = User(id: generateUserId(), username: username, displayname: username, passwordHash: passwordHash)
 
         users.append(newUser)
         
@@ -54,7 +63,7 @@ class Model {
     }
     
     func createPost(creatorId: Int, timestamp: NSDate, content: String) -> Int {
-        let newPost = Post(id: posts.count + 1, creatorId: creatorId, timestamp: timestamp, content: content)
+        let newPost = Post(id: generatePostId(), creatorId: creatorId, timestamp: timestamp, content: content)
         
         posts.append(newPost)
         
@@ -93,5 +102,25 @@ class Model {
     
     func nextRand(min: Int, max: Int) -> Int {
         return min + Int(arc4random_uniform(UInt32((max - min) + 1)))
+    }
+    
+    func getUserById(id: Int) -> User {
+        for user in users {
+            if (user.id == id) {
+                return user
+            }
+        }
+        
+        return User()
+    }
+    
+    func currentUser() -> User {
+        return getUserById(currentUserId)
+    }
+}
+
+extension Post {
+    func creator() -> User {
+        return Model.instance.getUserById(self.creatorId)
     }
 }

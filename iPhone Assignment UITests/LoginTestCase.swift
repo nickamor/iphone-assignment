@@ -37,11 +37,13 @@ class LoginTestCase: XCTestCase {
         usernameTextField.tap()
         usernameTextField.typeText("bob")
         
-        let passwordTextField = app.textFields["Password"]
-        passwordTextField.tap()
-        passwordTextField.typeText("password")
+        let passwordSecureTextField = app.secureTextFields["Password"]
+        passwordSecureTextField.tap()
+        passwordSecureTextField.typeText("password")
         app.buttons["Log in"].tap()
         
+        // TODO: test current view controller - should be homeviewcontroller
+        // XCTAssertNotNil(app)
     }
     
 }

@@ -10,15 +10,21 @@ import Foundation
 
 class User {
     var id: Int = 0
-    var name: String = ""
+    var username: String = ""
+    var displayname: String = "NoSuchUser"
     var passwordHash: String = ""
     var iconURI: String = ""
     var backgroundURI: String = ""
     var bio: String = ""
     
-    init(id: Int, name: String, passwordHash: String) {
+    init() {
+        
+    }
+    
+    init(id: Int, username: String, displayname: String, passwordHash: String) {
         self.id = id
-        self.name = name
+        self.username = username
+        self.displayname = displayname
         self.passwordHash = passwordHash
     }
 }
