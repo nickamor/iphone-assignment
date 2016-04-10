@@ -9,5 +9,9 @@
 import UIKit
 
 class ReplyTableViewCell: UITableViewCell {
+    @IBOutlet weak var icon: UIImageView!
+    @IBOutlet weak var name: UILabel!
+    @IBOutlet weak var timestamp: UILabel!
+    @IBOutlet weak var content: UITextView!
     
 }

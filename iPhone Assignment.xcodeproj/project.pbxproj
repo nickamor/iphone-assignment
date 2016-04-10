@@ -164,12 +164,12 @@
 			isa = PBXGroup;
 			children = (
 				BA4958A31CB2238900907E84 /* Model.swift */,
+				01E1F0391CBA5EA700820DA0 /* Model.User.swift */,
 				BA4958A51CB2239400907E84 /* User.swift */,
 				BA4958A71CB2240100907E84 /* Post.swift */,
 				BA4958A91CB2242300907E84 /* Reply.swift */,
 				BA4958AB1CB224A900907E84 /* Vote.swift */,
 				BA4958AD1CB224B600907E84 /* Follow.swift */,
-				01E1F0391CBA5EA700820DA0 /* Model.User.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";

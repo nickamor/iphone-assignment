@@ -24,12 +24,8 @@ class FeedController: UIViewController, UITableViewDelegate, UITableViewDataSour
         // Dispose of any resources that can be recreated.
     }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
-    }
-    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.model.posts.count
+        return model.posts.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -38,7 +34,7 @@ class FeedController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         let post = model.posts[indexPath.row]
         
-        let poster = post.creator()
+        let poster = post.creator
         
         // TODO: implement selective reply count fetching
         // let votes = model.getRepliesByPostId(post.id)

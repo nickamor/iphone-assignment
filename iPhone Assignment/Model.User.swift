@@ -9,27 +9,63 @@
 import Foundation
 
 extension User {
-    func followers() -> [User] {
-        var followers = [User]()
-        
-        for follow in Model.instance.follows {
-            if (follow.victimId == self.id) {
-                followers.append(Model.instance.getUserById(follow.stalkerId))
+    var followers: [User] {
+        get {
+            var followers = [User]()
+            
+            for follow in Model.instance.follows {
+                if (follow.childId == self.id) {
+                    followers.append(Model.instance.getUserById(follow.parentId))
+                }
             }
+            
+            return followers
         }
-        
-        return followers
     }
     
-    func follows() -> [User] {
-        var follows = [User]()
-        
-        for follow in Model.instance.follows {
-            if (follow.stalkerId == self.id) {
-                follows.append(Model.instance.getUserById(follow.victimId))
+    var follows: [User] {
+        get {
+            var follows = [User]()
+            
+            for follow in Model.instance.follows {
+                if (follow.parentId == self.id) {
+                    follows.append(Model.instance.getUserById(follow.childId))
+                }
             }
+        
+            return follows
+        }
+    }
+    
+    func post(timestamp: NSDate, content: String) -> Int {
+        return Model.instance.createPost(self.id, timestamp: timestamp, content: content)
+    }
+    
+    func reply(postId: Int, timestamp: NSDate, content: String) -> Int {
+        return Model.instance.createReply(postId, creatorId: self.id, timestamp: timestamp, content: content)
+    }
+    
+    func reply(post: Post, timestamp:NSDate, content: String) -> Int {
+        return reply(post.id, timestamp: timestamp, content: content)
+    }
+    
+    func vote(postId: Int) -> Int {
+        return Model.instance.createVote(self.id, postId: postId)
+    }
+    
+    func vote(post: Post) -> Int {
+        return vote(post.id)
+    }
+    
+    func follow(childId: Int) -> Int {
+        if (childId != self.id) {
+            return Model.instance.createFollow(self.id, childId: childId)
         }
         
-        return follows
+        return 0
+    }
+    
+    func follow(user: User) {
+        follow(user.id)
     }
 }

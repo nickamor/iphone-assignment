@@ -11,15 +11,51 @@ import Foundation
 class Model {
     static let instance = Model()
     
-    private init() {
-        let aliceId = createUser("alice", passwordHash: passwordHash("alice"))
-        let bobId = createUser("bob", passwordHash: passwordHash("password"))
+    func generate() {
+        let commonPasswordHash = passwordHash("password")
         
-        getUserById(aliceId).displayname = "Alice"
-        getUserById(bobId).displayname = "Bob"
+        // users
+        let alice = getUserById(createUser("alice", passwordHash: commonPasswordHash))
+        let bob = getUserById(createUser("bob", passwordHash: passwordHash("bob")))
+        let cristina = getUserById(createUser("cristina", passwordHash: commonPasswordHash))
+        let dale = getUserById(createUser("dale", passwordHash: commonPasswordHash))
+        let evan = getUserById(createUser("evan", passwordHash: commonPasswordHash))
+        let franky = getUserById(createUser("franky", passwordHash: commonPasswordHash))
+        let geoff = getUserById(createUser("geoff", passwordHash: commonPasswordHash))
+        createUser("harriette", passwordHash: commonPasswordHash)
+        let imogenId = createUser("imogen", passwordHash: commonPasswordHash)
         
-        let firstPostId = createPost(aliceId, timestamp: NSDate(), content: "Hello, World!")
-        createReply(firstPostId, creatorId: bobId, timestamp: NSDate(), content: "Bonjour tout le monde!")
+        // posts
+        let firstPost = alice.post(NSDate(), content: "Hello, World! This is the first post. Lorem ipsum dolor sit amet.")
+        bob.reply(firstPost, timestamp: NSDate(), content: "Bonjour tout le monde! This is the first reply to the first post.")
+        
+        let secondPost = cristina.post(NSDate(), content: "This is the second post. orem Ipsum is simply dummy text of the printing and typesetting industry.")
+        cristina.reply(secondPost, timestamp: NSDate(), content: "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.")
+        alice.reply(secondPost, timestamp: NSDate(), content: "It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.")
+        
+        // votes
+        for post in posts {
+            dale.vote(post)
+        }
+        
+        // follows
+        alice.follow(bob)
+        bob.follow(alice)
+        
+        dale.follow(evan)
+        dale.follow(franky)
+        evan.follow(dale)
+        evan.follow(franky)
+        franky.follow(dale)
+        franky.follow(evan)
+        
+        for user in users {
+            geoff.follow(user)
+        }
+        
+        for user in users {
+            user.follow(imogenId)
+        }
     }
     
     var users: [User] = [User]()
@@ -34,6 +70,7 @@ class Model {
         for user: User in users {
             if user.username == username && user.passwordHash == passwordHash {
                 currentUserId = user.id
+                break
             }
         }
         
@@ -49,6 +86,7 @@ class Model {
     func passwordHash(password: String) -> String {
         var hashedString = ""
         
+        // TODO: stronger hash function
         hashedString += password + "1"
 
         return hashedString
@@ -73,7 +111,11 @@ class Model {
     }
     
     func createVote(userId: Int, postId: Int) -> Int {
-        return 0
+        let newVote = Vote(id: generateVoteId(), userId: userId, postId: postId)
+        
+        votes.append(newVote)
+        
+        return newVote.id
     }
     
     func createReply(postId: Int, creatorId: Int, timestamp: NSDate, content: String) -> Int {
@@ -84,20 +126,32 @@ class Model {
         return newReply.id
     }
     
-    func createFollow() -> Int {
-        return 0
+    func createFollow(parentId: Int, childId: Int) -> Int {
+        let newFollow = Follow(id: generateFollowId(), parentId: parentId, childId: childId)
+        
+        follows.append(newFollow)
+        
+        return newFollow.id
     }
     
     func generateUserId() -> Int {
-        return nextRand(1000, max: 1999)
+        return nextRand(100000, max: 199999)
     }
     
     func generatePostId() -> Int {
-        return nextRand(2000, max: 2999)
+        return nextRand(200000, max: 299999)
     }
     
     func generateReplyId() -> Int {
-        return nextRand(3000, max: 3999)
+        return nextRand(300000, max: 399999)
+    }
+    
+    func generateVoteId() -> Int {
+        return nextRand(400000, max: 499999)
+    }
+    
+    func generateFollowId() -> Int {
+        return nextRand(500000, max: 599999)
     }
     
     func nextRand(min: Int, max: Int) -> Int {
@@ -120,7 +174,31 @@ class Model {
 }
 
 extension Post {
-    func creator() -> User {
-        return Model.instance.getUserById(self.creatorId)
+    var creator: User {
+        get {
+            return Model.instance.getUserById(self.creatorId)
+        }
+    }
+    
+    var replies: [Reply] {
+        get {
+            var replies: [Reply] = [Reply]()
+            
+            for reply in Model.instance.replies {
+                if reply.postId == self.id {
+                    replies.append(reply)
+                }
+            }
+            
+            return replies
+        }
+    }
+}
+
+extension Reply {
+    var creator: User {
+        get {
+            return Model.instance.getUserById(self.creatorId)
+        }
     }
 }

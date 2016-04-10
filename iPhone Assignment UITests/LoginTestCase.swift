@@ -44,6 +44,7 @@ class LoginTestCase: XCTestCase {
         
         // TODO: test current view controller - should be homeviewcontroller
         // XCTAssertNotNil(app)
+        
     }
     
 }

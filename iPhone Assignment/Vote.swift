@@ -12,4 +12,10 @@ class Vote {
     var id: Int = 0
     var userId: Int = 0
     var postId: Int = 0
+    
+    init(id: Int, userId: Int, postId: Int) {
+        self.id = id
+        self.userId = userId
+        self.postId = postId
+    }
 }
