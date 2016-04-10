@@ -8,7 +8,9 @@
 
 import UIKit
 
-class FollowsController: UIViewController {
+class FollowsController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    let follows = Model.instance.currentUser().follows
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,6 +21,18 @@ class FollowsController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return follows.count
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        return UITableViewCell()
+    }
+    
+    func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
+        
     }
     
 }

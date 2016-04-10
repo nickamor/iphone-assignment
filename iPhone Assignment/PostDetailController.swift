@@ -67,7 +67,7 @@ class PostDetailController: UIViewController, UITableViewDelegate, UITableViewDa
         
     }
     
-    @IBAction func unwindToPostDetail(segue: UIStoryboardSegue) {
-        
+    @IBAction func back(sender: UIBarButtonItem) {
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
 }

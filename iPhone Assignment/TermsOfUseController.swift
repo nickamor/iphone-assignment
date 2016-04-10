@@ -1,14 +1,14 @@
 //
-//  NewReplyController.swift
+//  TermsOfUseController.swift
 //  iPhone Assignment
 //
-//  Created by Nicholas Amor on 10/04/2016.
+//  Created by Nicholas Amor on 11/04/2016.
 //  Copyright © 2016 Nicholas Amor. All rights reserved.
 //
 
 import UIKit
 
-class NewReplyController: UIViewController {
+class TermsOfUseController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,13 +21,7 @@ class NewReplyController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func cancel(sender: UIBarButtonItem) {
+    @IBAction func close(sender: UIButton) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
-    
-    @IBAction func reply(sender: UIBarButtonItem) {
-        // TODO: create reply
-        self.dismissViewControllerAnimated(true, completion: nil)
-    }
-    
 }

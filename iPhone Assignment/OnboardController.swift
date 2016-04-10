@@ -17,14 +17,10 @@ class OnboardController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
-        // set status bar style
-        UIApplication.sharedApplication().statusBarStyle = .LightContent
     }
     
-    override func viewWillDisappear(animated: Bool) {
-        // reset status bar style
-        UIApplication.sharedApplication().statusBarStyle = .Default
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return .LightContent
     }
     
     override func didReceiveMemoryWarning() {
