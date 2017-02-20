@@ -2,7 +2,7 @@
 //  Home.FriendFeedController.swift
 //  iPhone Assignment
 //
-//  Created by Nick Amor on 4/04/2016.
+//  Created by Nicholas Amor on 4/04/2016.
 //  Copyright © 2016 Nicholas Amor. All rights reserved.
 //
 
@@ -12,11 +12,11 @@ class FeedController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     @IBOutlet var tableView: UITableView!
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         if tableView.indexPathsForSelectedRows != nil {
-            tableView.deselectRowAtIndexPath(self.tableView.indexPathForSelectedRow!, animated: true)
+            tableView.deselectRow(at: self.tableView.indexPathForSelectedRow!, animated: true)
         }
     }
     
@@ -32,13 +32,13 @@ class FeedController: UIViewController, UITableViewDelegate, UITableViewDataSour
         // Dispose of any resources that can be recreated.
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return model.posts.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellIdentifier = "PostTableViewCell"
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! PostTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! PostTableViewCell
         
         let post = model.posts[indexPath.row]
         
@@ -53,7 +53,7 @@ class FeedController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return cell
     }
     
-    func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         
     }
     

@@ -2,7 +2,7 @@
 //  UserDetailController.swift
 //  iPhone Assignment
 //
-//  Created by Nick Amor on 8/04/2016.
+//  Created by Nicholas Amor on 8/04/2016.
 //  Copyright © 2016 Nicholas Amor. All rights reserved.
 //
 
@@ -32,8 +32,8 @@ class UserDetailController: UIViewController {
     }
      */
     
-    @IBAction func back(sender: UIBarButtonItem) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+    @IBAction func back(_ sender: UIBarButtonItem) {
+        self.dismiss(animated: true, completion: nil)
     }
 
 }

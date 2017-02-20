@@ -17,8 +17,8 @@ class MeController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return .LightContent
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return .lightContent
     }
     
     override func didReceiveMemoryWarning() {
@@ -27,8 +27,8 @@ class MeController: UIViewController {
     }
     
     @IBAction func logoutAction() {
-        Model.instance.logout()
-        
-        performSegueWithIdentifier("LogoutSegue", sender: self)
+        if Model.instance.logout() {
+            performSegue(withIdentifier: "LogoutSegue", sender: self)
+        }
     }
 }

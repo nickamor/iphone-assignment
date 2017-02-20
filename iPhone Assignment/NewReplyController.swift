@@ -21,13 +21,13 @@ class NewReplyController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func cancel(sender: UIBarButtonItem) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+    @IBAction func cancel(_ sender: UIBarButtonItem) {
+        self.dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func reply(sender: UIBarButtonItem) {
+    @IBAction func reply(_ sender: UIBarButtonItem) {
         // TODO: create reply
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
     
 }

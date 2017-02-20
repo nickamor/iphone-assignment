@@ -28,11 +28,11 @@ class LoginTestCase: XCTestCase {
         super.tearDown()
     }
     
-    func wait(evaluatedWithObject: AnyObject) {
+    func wait(_ evaluatedWithObject: AnyObject) {
         let exists = NSPredicate(format: "exists == 1")
         
-        expectationForPredicate(exists, evaluatedWithObject: evaluatedWithObject, handler: nil)
-        waitForExpectationsWithTimeout(5, handler: nil)
+        expectation(for: exists, evaluatedWith: evaluatedWithObject, handler: nil)
+        waitForExpectations(timeout: 5, handler: nil)
     }
     
     func testLogin() {
@@ -61,17 +61,13 @@ class LoginTestCase: XCTestCase {
         wait(toolbarsQuery.buttons["Add"])
         toolbarsQuery.buttons["Add"].tap()
         
-        let element = app.childrenMatchingType(.Window).elementBoundByIndex(0).childrenMatchingType(.Other).elementBoundByIndex(1).childrenMatchingType(.Other).element
-        element.childrenMatchingType(.TextView).element.tap()
-        element.childrenMatchingType(.TextView).element
+        let element = app.children(matching: .window).element(boundBy: 0).children(matching: .other).element(boundBy: 1).children(matching: .other).element
+        element.children(matching: .textView).element.tap()
         app.otherElements["Hey"].tap()
-        element.childrenMatchingType(.TextView).element
         app.otherElements["hey"].tap()
-        element.childrenMatchingType(.TextView).element
         app.otherElements["it's"].tap()
-        element.childrenMatchingType(.TextView).element
+        element.children(matching: .textView).element
         app.otherElements["Saturday"].tap()
-        element.childrenMatchingType(.TextView).element
         toolbarsQuery.buttons["Post"].tap()
         
     }
@@ -89,8 +85,7 @@ class LoginTestCase: XCTestCase {
         
         wait(toolbarsQuery.buttons["Search"])
         toolbarsQuery.buttons["Search"].tap()
-        app.childrenMatchingType(.Window).elementBoundByIndex(0).childrenMatchingType(.Other).elementBoundByIndex(2).childrenMatchingType(.Other).element.childrenMatchingType(.TextField).element.tap()
-        app.textFields.containingType(.Button, identifier:"Clear text").element
+        app.children(matching: .window).element(boundBy: 0).children(matching: .other).element(boundBy: 2).children(matching: .other).element.children(matching: .textField).element.tap()
         
 
         app.tables.staticTexts["bob"].tap()
@@ -112,7 +107,7 @@ class LoginTestCase: XCTestCase {
         
         
         let elementsQuery = app.scrollViews.otherElements
-        elementsQuery.childrenMatchingType(.TextView).element.tap()
+        elementsQuery.children(matching: .textView).element.tap()
         wait(elementsQuery.buttons["Log Out"])
         elementsQuery.buttons["Log Out"].tap()
         

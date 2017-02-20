@@ -21,7 +21,7 @@ class TermsOfUseController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func close(sender: UIButton) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+    @IBAction func close(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
     }
 }

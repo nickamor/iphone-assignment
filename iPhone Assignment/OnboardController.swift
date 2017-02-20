@@ -13,14 +13,13 @@ class OnboardController: UIViewController {
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var login: UIButton!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
     
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return .LightContent
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return .lightContent
     }
     
     override func didReceiveMemoryWarning() {
@@ -28,19 +27,18 @@ class OnboardController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func loginAction(sender: UIButton) {
+    @IBAction func loginAction(_ sender: UIButton) {
         let model = Model.instance
         
-        let u = model.login(username.text!, passwordHash: model.passwordHash(password.text!))
+        let user = model.login(username.text!, passwordHash: model.passwordHash(password.text!))
         
-        if u > 0 {
-            performSegueWithIdentifier("LoginSegue", sender: self)
-            
+        if user > 0 {
+            performSegue(withIdentifier: "LoginSegue", sender: self)
         } else {
-            let alertController = UIAlertController(title: "Log In Error", message: "The username or password you provided was incorrect.", preferredStyle: UIAlertControllerStyle.Alert)
-            alertController.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+            let alertController = UIAlertController(title: "Log In Error", message: "The username or password you provided was incorrect.", preferredStyle: UIAlertControllerStyle.alert)
+            alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             
-            presentViewController(alertController, animated: true, completion: nil)
+            present(alertController, animated: true, completion: nil)
             
             password.text = ""
         }

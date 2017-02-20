@@ -2,7 +2,7 @@
 //  PostDetailController.swift
 //  iPhone Assignment
 //
-//  Created by Nick Amor on 4/04/2016.
+//  Created by Nicholas Amor on 4/04/2016.
 //  Copyright © 2016 Nicholas Amor. All rights reserved.
 //
 
@@ -45,13 +45,13 @@ class PostDetailController: UIViewController, UITableViewDelegate, UITableViewDa
         // Dispose of any resources that can be recreated.
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return post.replies.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellIdentifier = "ReplyTableViewCell"
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! ReplyTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! ReplyTableViewCell
         
         let reply = post.replies[indexPath.row]
         
@@ -63,7 +63,7 @@ class PostDetailController: UIViewController, UITableViewDelegate, UITableViewDa
         return cell
     }
     
-    @IBAction func back(sender: UIBarButtonItem) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+    @IBAction func back(_ sender: UIBarButtonItem) {
+        self.dismiss(animated: true, completion: nil)
     }
 }

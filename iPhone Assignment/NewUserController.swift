@@ -21,13 +21,13 @@ class NewUserController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func signUp(sender: UIButton) {
-        Model.instance.login("bob", passwordHash: Model.instance.passwordHash("bob"))
-        
-        performSegueWithIdentifier("LoginAction", sender: self)
+    @IBAction func signUp(_ sender: UIButton) {
+        if Model.instance.login("bob", passwordHash: Model.instance.passwordHash("bob")) > 0 {
+            performSegue(withIdentifier: "LoginAction", sender: self)
+        }
     }
     
-    @IBAction func cancel(sender: UIButton) {
-        dismissViewControllerAnimated(true, completion: nil)
+    @IBAction func cancel(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
     }
 }

@@ -2,7 +2,7 @@
 //  Model.swift
 //  iPhone Assignment
 //
-//  Created by Nick Amor on 4/04/2016.
+//  Created by Nicholas Amor on 4/04/2016.
 //  Copyright © 2016 Nicholas Amor. All rights reserved.
 //
 
@@ -11,8 +11,13 @@ import Foundation
 class Model {
     static let instance = Model()
     
+    // Pre-populate the social network
     func generate() {
         let commonPasswordHash = passwordHash("password")
+        
+        func assertGTZ(_ value: Int) {
+            assert(value > 0, "Unexpected value \(value), interal error")
+        }
         
         // users
         let alice = getUserById(createUser("alice", passwordHash: commonPasswordHash))
@@ -22,39 +27,45 @@ class Model {
         let evan = getUserById(createUser("evan", passwordHash: commonPasswordHash))
         let franky = getUserById(createUser("franky", passwordHash: commonPasswordHash))
         let geoff = getUserById(createUser("geoff", passwordHash: commonPasswordHash))
-        createUser("harriette", passwordHash: commonPasswordHash)
+        assertGTZ(createUser("harriette", passwordHash: commonPasswordHash))
         let imogenId = createUser("imogen", passwordHash: commonPasswordHash)
         
         // posts
-        let firstPost = alice.post(NSDate(), content: "Hello, World! This is the first post. Lorem ipsum dolor sit amet.")
-        bob.reply(firstPost, timestamp: NSDate(), content: "Bonjour tout le monde! This is the first reply to the first post.")
+        let firstPost = alice.post(Date(), content: "Hello, World! This is the first post. Lorem ipsum dolor sit amet.")
+        assertGTZ(bob.reply(firstPost, timestamp: Date(), content: "Bonjour tout le monde! This is the first reply to the first post."))
         
-        let secondPost = cristina.post(NSDate(), content: "This is the second post. orem Ipsum is simply dummy text of the printing and typesetting industry.")
-        cristina.reply(secondPost, timestamp: NSDate(), content: "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.")
-        alice.reply(secondPost, timestamp: NSDate(), content: "It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.")
+        let secondPost = cristina.post(Date(), content: "This is the second post. orem Ipsum is simply dummy text of the printing and typesetting industry.")
+        assertGTZ(cristina.reply(secondPost, timestamp: Date(), content: "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."))
+        assertGTZ(alice.reply(secondPost, timestamp: Date(), content: "It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged."))
         
         // votes
         for post in posts {
-            dale.vote(post)
+            assertGTZ(dale.vote(post))
         }
         
         // follows
-        alice.follow(bob)
-        bob.follow(alice)
+        assertGTZ(alice.follow(bob))
+        assertGTZ(bob.follow(alice))
         
-        dale.follow(evan)
-        dale.follow(franky)
-        evan.follow(dale)
-        evan.follow(franky)
-        franky.follow(dale)
-        franky.follow(evan)
+        assertGTZ(dale.follow(evan))
+        assertGTZ(dale.follow(franky))
+        assertGTZ(evan.follow(dale))
+        assertGTZ(evan.follow(franky))
+        assertGTZ(franky.follow(dale))
+        assertGTZ(franky.follow(evan))
         
+        // geoff follows everyone
         for user in users {
-            geoff.follow(user)
+            if user.id != geoff.id {
+                assertGTZ(geoff.follow(user))
+            }
         }
         
+        // everyone follows imogen
         for user in users {
-            user.follow(imogenId)
+            if user.id != imogenId {
+                assertGTZ(user.follow(imogenId))
+            }
         }
     }
     
@@ -66,7 +77,7 @@ class Model {
     
     var currentUserId: Int = 0
     
-    func login(username: String, passwordHash: String) -> Int {
+    func login(_ username: String, passwordHash: String) -> Int {
         for user: User in users {
             if user.username == username && user.passwordHash == passwordHash {
                 currentUserId = user.id
@@ -83,7 +94,7 @@ class Model {
         return true
     }
     
-    func passwordHash(password: String) -> String {
+    func passwordHash(_ password: String) -> String {
         var hashedString = ""
         
         // TODO: stronger hash function
@@ -92,7 +103,7 @@ class Model {
         return hashedString
     }
     
-    func createUser(username: String, passwordHash: String) -> Int {
+    func createUser(_ username: String, passwordHash: String) -> Int {
         let newUser = User(id: generateUserId(), username: username, displayname: username, passwordHash: passwordHash)
 
         users.append(newUser)
@@ -100,17 +111,17 @@ class Model {
         return newUser.id
     }
     
-    func createPost(creatorId: Int, timestamp: NSDate, content: String) -> Int {
+    func createPost(_ creatorId: Int, timestamp: Date, content: String) -> Int {
         let newPost = Post(id: generatePostId(), creatorId: creatorId, timestamp: timestamp, content: content)
         
         posts.append(newPost)
         
-        createVote(creatorId, postId: newPost.id)
+        assert(createVote(creatorId, postId: newPost.id) > 0, "Unexpected lack of vote id, internal error")
         
         return newPost.id
     }
     
-    func createVote(userId: Int, postId: Int) -> Int {
+    func createVote(_ userId: Int, postId: Int) -> Int {
         let newVote = Vote(id: generateVoteId(), userId: userId, postId: postId)
         
         votes.append(newVote)
@@ -118,7 +129,7 @@ class Model {
         return newVote.id
     }
     
-    func createReply(postId: Int, creatorId: Int, timestamp: NSDate, content: String) -> Int {
+    func createReply(_ postId: Int, creatorId: Int, timestamp: Date, content: String) -> Int {
         let newReply = Reply(id: generateReplyId(), postId: postId, creatorId: creatorId, timestamp: timestamp, content: content)
         
         replies.append(newReply)
@@ -126,7 +137,7 @@ class Model {
         return newReply.id
     }
     
-    func createFollow(parentId: Int, childId: Int) -> Int {
+    func createFollow(_ parentId: Int, childId: Int) -> Int {
         let newFollow = Follow(id: generateFollowId(), parentId: parentId, childId: childId)
         
         follows.append(newFollow)
@@ -154,13 +165,13 @@ class Model {
         return nextRand(500000, max: 599999)
     }
     
-    func nextRand(min: Int, max: Int) -> Int {
+    func nextRand(_ min: Int, max: Int) -> Int {
         return min + Int(arc4random_uniform(UInt32((max - min) + 1)))
     }
     
-    func getUserById(id: Int) -> User {
+    func getUserById(_ id: Int) -> User {
         for user in users {
-            if (user.id == id) {
+            if user.id == id {
                 return user
             }
         }
