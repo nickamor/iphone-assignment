@@ -30,6 +30,15 @@ class NewPostController: UIViewController {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
-    */
+     */
+    
+    @IBAction func cancel(sender: UIBarButtonItem) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    @IBAction func post(sender: UIBarButtonItem) {
+        // TODO: create post
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
 
 }

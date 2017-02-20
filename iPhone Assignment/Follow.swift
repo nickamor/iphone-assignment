@@ -10,6 +10,12 @@ import Foundation
 
 class Follow {
     var id: Int = 0
-    var victimId: Int = 0
-    var stalkerId: Int = 0
+    var parentId: Int = 0
+    var childId: Int = 0
+    
+    init(id: Int, parentId: Int, childId: Int) {
+        self.id = id
+        self.parentId = parentId
+        self.childId = childId
+    }
 }

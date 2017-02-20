@@ -12,7 +12,11 @@ class Post {
     var id: Int = 0
     var creatorId: Int = 0
     var timestamp: NSDate = NSDate()
-    var content: String = ""
+    var content: String = "NoSuchPost"
+    
+    init() {
+        
+    }
     
     init (id: Int, creatorId: Int, timestamp: NSDate, content: String) {
         self.id = id

@@ -1,14 +1,14 @@
 //
-//  Home.FriendFeedController.swift
+//  PostDetail.swift
 //  iPhone Assignment
 //
-//  Created by Nick Amor on 4/04/2016.
+//  Created by Nicholas Amor on 10/04/2016.
 //  Copyright © 2016 Nicholas Amor. All rights reserved.
 //
 
 import UIKit
 
-class FeedController: UIViewController {
+class PostDetailController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()

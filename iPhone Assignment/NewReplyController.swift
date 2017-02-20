@@ -1,14 +1,14 @@
 //
-//  Home.Following.swift
+//  NewReplyController.swift
 //  iPhone Assignment
 //
-//  Created by Nicholas Amor on 4/04/2016.
+//  Created by Nicholas Amor on 10/04/2016.
 //  Copyright © 2016 Nicholas Amor. All rights reserved.
 //
 
 import UIKit
 
-class FollowingController: UIViewController {
+class NewReplyController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,6 +19,15 @@ class FollowingController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @IBAction func cancel(sender: UIBarButtonItem) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    @IBAction func reply(sender: UIBarButtonItem) {
+        // TODO: create reply
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
 }
