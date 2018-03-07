@@ -1,4 +1,4 @@
-# COSC2471/2472 iPhone Software Engineering - Assignment 1
+# COSC2471/2472 iPhone Software Engineering - Assg. 1
 
 ## Completed by Nicholas Amor, s3240873, 11/04/2016
 
